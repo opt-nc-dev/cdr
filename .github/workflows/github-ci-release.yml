@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Run ZIP
-        run: gradle zip
+        run: gradle distZip
       # Publication du livrable dans github package.
       - name: Publish to GitHub Packages
         run: gradle publish
