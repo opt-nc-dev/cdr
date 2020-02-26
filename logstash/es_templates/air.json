@@ -1,0 +1,33 @@
+{
+  "index_patterns": [
+    "charging_system_air*"
+  ],
+  "mappings": {
+    "_doc": {
+      "dynamic_templates": [
+        {
+          "keywords": {
+            "match_mapping_type": "string",
+            "mapping": {
+              "type": "keyword"
+            }
+          }
+        }
+      ],
+      "properties": {
+        "triggerTime": {
+          "type": "date"
+        },
+        "date_time": {
+          "type": "date"
+        },
+        "accountBalance_beforeRefill": {
+          "type": "float"
+        },
+        "accountBalance_afterRefill": {
+          "type": "float"
+        }
+      }
+    }
+  }
+}

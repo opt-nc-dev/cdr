@@ -1,0 +1,44 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        gradlePluginPortal()
+        maven { url "https://repo.spring.io/plugins-release" }
+    }
+}
+
+plugins {
+    id "maven-publish"
+    id 'distribution'
+}
+
+distributions {
+    main {
+        contents {
+            from 'logstash'
+        }
+    }
+}
+
+distZip {
+    archiveName projectName + '-' + version + '.zip'
+}
+
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/opt-nc-dev/cdr")
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.key") ?: System.getenv("PASSWORD")
+            }
+        }
+    }
+    publications {
+        gpr(MavenPublication) {
+            artifact distZip
+        }
+    }
+}

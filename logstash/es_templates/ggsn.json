@@ -1,0 +1,51 @@
+{
+  "index_patterns": [
+    "ggsn*"
+  ],
+  "mappings": {
+    "_doc": {
+      "dynamic_templates": [
+        {
+          "keywords": {
+            "match_mapping_type": "string",
+            "mapping": {
+              "type": "keyword"
+            }
+          }
+        }
+        ],
+      "properties": {
+        "s_p_equipment_number": {
+          "type": "long"
+        },
+        "cust_info_main_msisdn": {
+          "type": "long"
+        },
+        "downlink_volume": {
+          "type": "long"
+        },
+        "s_p_port_address": {
+          "type": "long"
+        },
+        "rated_volume": {
+          "type": "long"
+        },
+        "s_p_number_address": {
+          "type": "ip"
+        },
+        "uplink_volume": {
+          "type": "long"
+        },
+        "data_volume": {
+          "type": "long"
+        },
+        "rattype": {
+          "type": "integer"
+        },
+        "call_type": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

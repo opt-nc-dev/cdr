@@ -1,0 +1,30 @@
+{
+  "index_patterns": [
+    "charging_system_ccn*"
+  ],
+  "mappings": {
+    "_doc": {
+      "dynamic_templates": [
+        {
+          "keywords": {
+            "match_mapping_type": "string",
+            "mapping": {
+              "type": "keyword"
+            }
+          }
+        }
+      ],
+      "properties": {
+        "triggerTime": {
+          "type": "date"
+        },
+        "date_time": {
+          "type": "date"
+        },
+        "resultCode": {
+          "type": "float"
+        }
+      }
+    }
+  }
+}

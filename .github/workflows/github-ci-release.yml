@@ -1,0 +1,30 @@
+name: zip
+on:
+  # Trigger the workflow on push,
+  # but only for the master branch
+  push:
+    branches:
+      - master
+jobs:
+  pipeline:
+    name: zip
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[ci skip]') && !contains(github.event.head_commit.message, '[skip ci]')"
+    timeout-minutes: 40
+    env:
+      PROJECT_NAME: logstash
+      PACKAGE_EXT: zip
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run ZIP
+        run: |
+          chmod +x gradlew
+          ./gradlew zip
+      - name: Package application
+        run: ./gradlew bootJar -Pprod -x test -x integrationTest
+      # Publication du livrable dans github package.
+      - name: Publish to GitHub Packages
+        run: gradle publish
+        env:
+          USERNAME: ${{ github.actor }}
+          PASSWORD: ${{ secrets.GITHUB_TOKEN }}

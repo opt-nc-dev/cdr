@@ -1,0 +1,46 @@
+{
+  "index_patterns": [
+    "smsc*"
+  ],
+  "mappings" : {
+    "_doc"  : {
+      "dynamic_templates": [
+        {
+          "keywords": {
+            "match_mapping_type": "string",
+            "mapping": {
+              "type": "keyword"
+            }
+          }
+        }
+        ],
+      "properties" : {
+        "date_time" : {
+          "type" : "date"
+        },
+        "input_timestamp" : {
+          "type" : "date",
+          "format" : "epoch_second"
+        },
+        "status" : {
+          "type" : "integer"
+        },
+        "input_size" : {
+          "type" : "long"
+        },
+        "src_addr_ton" : {
+          "type" : "integer"
+        },
+        "dest_addr_ton" : {
+          "type" : "integer"
+        },
+        "priority" : {
+          "type" : "integer"
+        },
+        "current_time" : {
+          "type" : "integer"
+        }
+      }
+    }
+  }
+}
