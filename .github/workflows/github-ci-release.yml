@@ -17,11 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Run ZIP
-        run: |
-          chmod +x gradlew
-          ./gradlew zip
-      - name: Package application
-        run: ./gradlew bootJar -Pprod -x test -x integrationTest
+        run: gradle zip
       # Publication du livrable dans github package.
       - name: Publish to GitHub Packages
         run: gradle publish

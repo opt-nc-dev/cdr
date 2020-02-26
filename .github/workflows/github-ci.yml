@@ -18,6 +18,4 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Run ZIP
-        run: |
-          chmod +x gradlew
-          ./gradlew zip
+        run: gradle zip
